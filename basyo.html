@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <!--タイトル-->
+    <title>
+        夏旅行
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 70px; 
+        }
+    </style>
+</head>
+<body>
+    <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container-fluid">
+        <div style="width: 40px;">
+            <a href="index.html" class="text-dark">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                </svg>
+            </a>
+        </div>
+
+        <span class="navbar-brand m-0">場所</span>
+
+        <div style="width: 40px;"></div>
+    </div>
+    </nav>
+    </header>
+    <main class="container mt-3">
+    <div class="row g-3"> 
+        <div class="col-6">
+            <!--会場名-->
+            <p class="fs-5 fw-bold mb-2">Kアリーナ横浜</p>
+            <!--会場画像-->
+            <p>
+                <img src="kaijou.jpg" class="img-fluid rounded" alt="Kアリーナ横浜">
+            </p>
+            <!--地図URL-->
+            <p>
+                <a class="nav-link text-primary text-decoration-underline p-0" href="https://www.google.co.jp/maps/place/..." target="_blank" rel="noopener noreferrer">地図</a>
+            </p>
+        </div>
+
+        <div class="col-6">
+            <!--会場名-->
+            <p class="fs-5 fw-bold mb-2">コンフォートイン千葉浜野r16</p>
+            <!--会場画像-->
+            <p>
+                <img src="hotel.jpg" class="img-fluid rounded" alt="コンフォートイン千葉浜野r16">
+            </p>
+            <!--地図URL-->
+            <p>
+                <a class="nav-link text-primary text-decoration-underline p-0" href="https://www.google.com/maps/place/..." target="_blank" rel="noopener noreferrer">地図</a>
+            </p>
+        </div>
+
+    </div>
+</main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    window.addEventListener('load', () => {
+        const header = document.querySelector('.navbar');
+        const setPadding = () => {
+            document.body.style.paddingTop = header.offsetHeight + 'px';
+        };
+        setPadding();
+        window.addEventListener('resize', setPadding);
+        });
+    </script>
+</body>
+</html>
