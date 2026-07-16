@@ -17,21 +17,48 @@
 </head>
 <body>
     <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-    <div class="container-fluid">
-        <div style="width: 40px;">
-            <a href="index.html" class="text-dark">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
-                </svg>
-            </a>
+        <nav class="navbar navbar-light bg-light fixed-top">
+        <div class="container-fluid">
+            <button class="navbar-toggler border-0 p-0" type="button" 
+                data-bs-toggle="offcanvas" 
+                data-bs-target="#offcanvasNavbar" 
+                aria-controls="offcanvasNavbar">
+                <!--メニュー画像-->
+                <img src="menu.jpg" alt="メニュー画像" style="width: 40px; height: 40px;">
+            </button>
+            <!--ライブ名-->
+            <a class="navbar-brand text-wrap mx-auto text-center" href="#">HOSHIMACHI SUISEI ARENA TOUR 2026<br>
+Once Upon a Stellar</a>
+
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" role="dialog">
+                <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">メニュー</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" style="transform: scale(0.8);"></button>
+                </div>
+                <div class="offcanvas-body pt-0">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">ホーム</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="basyo.html">場所</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="motimono.html">持ち物</a>
+                        </li>
+                        <li class="nav-item">
+                            <!--曲URL-->
+                            <a class="nav-link" href="https://music.line.me/app/playlistEnd?playlistId=upi7nLrdtfvhxjzl-FWT409pB3haF8JRCU2Y&playlistDataType=PLAYLIST&cc=JP&v=1&from=lc" target="_blank" rel="noopener noreferrer">曲</a>
+                        </li>
+                        <li class="nav-item">
+                            <!--概要URL-->
+                            <a class="nav-link" href="https://hoshimachi-suisei-fc.jp/s/hs/ticket/detail/260322" target="_blank" rel="noopener noreferrer">概要</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-
-        <span class="navbar-brand m-0">お金</span>
-
-        <div style="width: 40px;"></div>
-    </div>
-    </nav>
+        </nav>
     </header>
     <main class="container mt-3 px-4 px-md-5">
     <div class="card shadow-sm">
