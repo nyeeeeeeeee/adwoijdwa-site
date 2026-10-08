@@ -24,7 +24,7 @@
                     <!--メニュー画像-->
                     <img src="menu.jpg" alt="メニュー画像" style="width: 40px; height: 40px;">
                 </button>
-                <!--ライブ名-->
+                <!--ライブ名（data.jsonから自動取得）-->
                 <a class="navbar-brand text-wrap mx-auto text-center" href="#" id="pageTitle">Sakura Miko<br>Blooming-Parade!!</a>
 
                 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" role="dialog">
@@ -48,12 +48,12 @@
                                 <a class="nav-link" id="okane-tab" data-bs-toggle="tab" data-bs-target="#okane-pane" role="tab">お金</a>
                             </li>
                             <li class="nav-item">
-                                <!--曲URL-->
-                                <a class="nav-link" href="https://youtube.com/playlist?list=PLDVPqFfLpuxCwfotweiQ5oQrwnxDctPNe&si=2EqZW2pqbz_FoXO6" target="_blank" rel="noopener noreferrer">曲</a>
+                                <!--曲URL（data.jsonから自動取得）-->
+                                <a class="nav-link" id="musicLink" href="#" target="_blank" rel="noopener noreferrer">曲</a>
                             </li>
                             <li class="nav-item">
-                                <!--概要URL-->
-                                <a class="nav-link" href="https://blooming-parade.hololivepro.com/" target="_blank" rel="noopener noreferrer">概要</a>
+                                <!--概要URL（data.jsonから自動取得）-->
+                                <a class="nav-link" id="overviewLink" href="#" target="_blank" rel="noopener noreferrer">概要</a>
                             </li>
                         </ul>
                     </div>
@@ -147,6 +147,7 @@
                 <p>
                     チケット<br>
                     <img src="okane4.jpg" class="img-fluid border border-dark mb-2" alt="チケット">
+                    <a class="nav-link text-primary text-decoration-underline p-0" href="https://t.pia.jp/" target="_blank" rel="noopener noreferrer">チケットぴあ</a>
                 </p>
             </div>
 
@@ -174,16 +175,31 @@
                 });
             });
 
-            // data.json から地図のURLを取得してセットする処理
+            // data.json から各項目を取得してセット
             fetch('data.json')
                 .then(response => response.json())
-                .then(mapUrls => {
-                    const links = document.querySelectorAll('.map-link');
-                    links.forEach((link, index) => {
-                        if (mapUrls[index]) {
-                            link.href = mapUrls[index];
-                        }
-                    });
+                .then(data => {
+                    // タイトル反映
+                    if (data.title) {
+                        document.getElementById('pageTitle').innerHTML = data.title;
+                    }
+                    // 曲URL反映
+                    if (data.musicUrl) {
+                        document.getElementById('musicLink').href = data.musicUrl;
+                    }
+                    // 概要URL反映
+                    if (data.overviewUrl) {
+                        document.getElementById('overviewLink').href = data.overviewUrl;
+                    }
+                    // 地図リンク反映
+                    if (data.maps && Array.isArray(data.maps)) {
+                        const links = document.querySelectorAll('.map-link');
+                        links.forEach((link, index) => {
+                            if (data.maps[index]) {
+                                link.href = data.maps[index];
+                            }
+                        });
+                    }
                 })
                 .catch(err => console.error('data.jsonの読み込みに失敗しました:', err));
         });
