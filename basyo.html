@@ -92,6 +92,11 @@
             setPadding();
             window.addEventListener('resize', setPadding);
         });
+        if (sessionStorage.getItem("authenticated") !== "true") {
+        location.href = "index.html";
+    }
+
+    window.addEventListener('load', () => { ... });
     </script>
 </body>
 </html>
