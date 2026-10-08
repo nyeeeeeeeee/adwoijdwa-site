@@ -88,25 +88,25 @@
                     <div class="col-6">
                         <p class="fs-5 fw-bold mb-2"></p>
                         <p><img src="basyo1.jpg" class="img-fluid rounded" alt="1"></p>
-                        <p><a class="nav-link text-primary text-decoration-underline p-0" href="https://www.google.co.jp/maps/place/K%E3%82%A2%E3%83%AA%E3%83%BC%E3%83%8A%E6%A8%AA%E6%B5%9C/@35.4645715,139.630625,17z/data=!3m1!4b1!4m6!3m5!1s0x60185d66ccb437e9:0xb4f6cda48f02cb83!8m2!3d35.4645715!4d139.630625!16s%2Fg%2F11rj5myt_z?hl=ja&entry=ttu&g_ep=EgoyMDI2MDUyNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">地図</a></p>
+                        <p><a class="map-link nav-link text-primary text-decoration-underline p-0" href="#" target="_blank" rel="noopener noreferrer">地図</a></p>
                     </div>
 
                     <div class="col-6">
                         <p class="fs-5 fw-bold mb-2"></p>
                         <p><img src="basyo2.jpg" class="img-fluid rounded" alt="2"></p>
-                        <p><a class="nav-link text-primary text-decoration-underline p-0" href="https://www.google.com/maps/place/%E3%83%95%E3%82%A1%E3%83%BC%E3%82%A4%E3%83%BC%E3%82%B9%E3%83%88%E3%83%93%E3%83%AC%E3%83%83%E3%82%B8%E3%83%9B%E3%83%86%E3%83%AB%E6%A8%AA%E6%B5%9C/@35.4479051,139.6303175,17z/data=!4m9!3m8!1s0x60185dec085fdf81:0xe5a2861ebbe665a3!5m2!4m1!1i2!8m2!3d35.4479051!4d139.6328924!16s%2Fg%2F11pb8v3g21?entry=ttu&g_ep=EgoyMDI2MDkzMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">地図</a></p>
+                        <p><a class="map-link nav-link text-primary text-decoration-underline p-0" href="#" target="_blank" rel="noopener noreferrer">地図</a></p>
                     </div>
 
                     <div class="col-6">
                         <p class="fs-5 fw-bold mb-2"></p>
                         <p><img src="basyo3.jpg" class="img-fluid rounded" alt="3"></p>
-                        <p><a class="nav-link text-primary text-decoration-underline p-0" href="地図URL" target="_blank" rel="noopener noreferrer">地図</a></p>
+                        <p><a class="map-link nav-link text-primary text-decoration-underline p-0" href="#" target="_blank" rel="noopener noreferrer">地図</a></p>
                     </div>
 
                     <div class="col-6">
                         <p class="fs-5 fw-bold mb-2"></p>
                         <p><img src="basyo4.jpg" class="img-fluid rounded" alt="4"></p>
-                        <p><a class="nav-link text-primary text-decoration-underline p-0" href="地図URL" target="_blank" rel="noopener noreferrer">地図</a></p>
+                        <p><a class="map-link nav-link text-primary text-decoration-underline p-0" href="#" target="_blank" rel="noopener noreferrer">地図</a></p>
                     </div>
                 </div>
             </div>
@@ -147,7 +147,6 @@
                 <p>
                     チケット<br>
                     <img src="okane4.jpg" class="img-fluid border border-dark mb-2" alt="チケット">
-                    <a class="nav-link text-primary text-decoration-underline p-0" href="https://t.pia.jp/" target="_blank" rel="noopener noreferrer">チケットぴあ</a>
                 </p>
             </div>
 
@@ -157,7 +156,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         window.addEventListener('load', () => {
-            // ナビバー位置の自動調整
+            // ナビバー位置自動調整
             const header = document.querySelector('.navbar');
             const setPadding = () => {
                 document.body.style.paddingTop = header.offsetHeight + 'px';
@@ -165,7 +164,7 @@
             setPadding();
             window.addEventListener('resize', setPadding);
 
-            // メニュー内のタブ項目を押した時にメニューを自動で閉じる処理
+            // メニュー選択時に自動で閉じる処理
             const offcanvasElement = document.getElementById('offcanvasNavbar');
             const offcanvas = bootstrap.Offcanvas.getOrCreateInstance(offcanvasElement);
 
@@ -174,6 +173,19 @@
                     offcanvas.hide();
                 });
             });
+
+            // data.json から地図のURLを取得してセットする処理
+            fetch('data.json')
+                .then(response => response.json())
+                .then(mapUrls => {
+                    const links = document.querySelectorAll('.map-link');
+                    links.forEach((link, index) => {
+                        if (mapUrls[index]) {
+                            link.href = mapUrls[index];
+                        }
+                    });
+                })
+                .catch(err => console.error('data.jsonの読み込みに失敗しました:', err));
         });
     </script>
 </body>
